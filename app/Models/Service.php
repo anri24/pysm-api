@@ -13,7 +13,7 @@ class Service extends Model
 
     protected $fillable = ['name_en', 'name_ar'];
 
-    public function ServiceDetail()
+    public function serviceDetail()
     {
         return $this->hasMany(ServiceDetail::class, 'service_id','id');
     }
