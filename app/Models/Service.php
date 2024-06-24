@@ -11,5 +11,5 @@ class Service extends Model
 
     protected $table = 'services';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name_en', 'name_ar'];
 }
