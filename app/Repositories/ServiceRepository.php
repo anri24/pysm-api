@@ -2,31 +2,36 @@
 
 namespace App\Repositories;
 
+use App\Models\Service;
+
 class ServiceRepository implements ServiceRepositoryInterface
 {
+    public function __construct(
+        protected readonly Service $service
+    ){}
 
     public function getAll()
     {
-
+        return $this->service::all();
     }
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        return $this->service::query()->findOrFail($id);
     }
 
     public function create($data)
     {
-        // TODO: Implement create() method.
+        return $this->service::create($data);
     }
 
     public function update($data, $id)
     {
-        // TODO: Implement update() method.
+        return $this->findById($id)->update($data);
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        return $this->findById($id)->delete();
     }
 }
