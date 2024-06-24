@@ -12,4 +12,9 @@ class Service extends Model
     protected $table = 'services';
 
     protected $fillable = ['name_en', 'name_ar'];
+
+    public function ServiceDetail()
+    {
+        return $this->hasMany(ServiceDetail::class, 'service_id','id');
+    }
 }
