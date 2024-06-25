@@ -19,7 +19,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): Application|Response|JsonResponse|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-
         $credentials = $request->validated();
 
         if (!Auth::attempt($credentials)){
@@ -32,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
 
-        return response()->json(['user'=>$user,'token'=>$token]);
+        return response(compact('user','token'));
     }
 
     /**
@@ -42,7 +41,6 @@ class AuthenticatedSessionController extends Controller
     {
         /** @var User $user */
         $user = $request->user();
-
         $user->currentAccessToken()->delete();
 
         return response('',204);
