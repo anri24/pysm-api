@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('service_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('name');
-            $table->string('visits');
-            $table->string('guaranty');
+            $table->string('name_en');
+            $table->string('name_ar');
+            $table->string('visits_en');
+            $table->string('visits_ar');
+            $table->string('guaranty_en');
+            $table->string('guaranty_ar');
             $table->integer('price');
             $table->integer('visitor_number');
             $table->timestamps();
